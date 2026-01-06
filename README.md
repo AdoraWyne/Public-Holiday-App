@@ -10,8 +10,10 @@ The main screen should show:
 
 # What I have done:
 - Got an array of Countries from this [API](https://openholidaysapi.org/swagger/index.html)
+- Change to use `react-query` from `useEffect` for calling API
 
 # Next:
 - Use the array of countries to render dropdown menu.
-- React query
+- Try to understand react query code.
 
+# DONE:

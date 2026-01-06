@@ -1,4 +1,8 @@
-import { useEffect, useState } from 'react';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import './App.css';
 
 type LocalizedText = {
@@ -12,26 +16,35 @@ type Country = {
   officialLanguage: string[];
 };
 
-function App() {
-  const [countries, setCountries] = useState<Country[]>([]);
+const queryClient = new QueryClient()
 
-  useEffect(() => {
-    async function fetchCountries() {
-      const response = await fetch('https://openholidaysapi.org/Countries');
-      const data = await response.json();
-      setCountries(data);
-    }
+function CountriesList() {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["fetchCountries"],
+    queryFn: () => 
+    fetch('https://openholidaysapi.org/Countries')
+    .then((res) => res.json())
+  })
 
-    fetchCountries();
-  }, []);
+  const countries = data || []
 
   console.log(countries);
 
   return (
     <div>
       <h1>Public Holiday App</h1>
+      { isLoading && <p style={{ color: "grey" }}>Loading...</p>}
+      { error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
+}
+
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <CountriesList />
+    </QueryClientProvider>
+  )
 }
 
 export default App;
