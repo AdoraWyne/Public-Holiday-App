@@ -126,3 +126,25 @@ useQuery({
   staleTime: 5 * 60 * 1000, // 5 minutes
 })
 ```
+
+# QueryClient and QueryClientProvider
+React Query needs a `QueryClient` (the cache manager), and you must wrap your app in a `QueryClientProvider`.
+
+Create the client + provider (usually in `main.jsx` / `main.tsx`)
+```ts
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import App from './App'
+
+const queryClient = new QueryClient()
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </React.StrictMode>
+)
+```
+
