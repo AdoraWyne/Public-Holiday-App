@@ -96,4 +96,20 @@ React Query thinks in two states:
 - You see cached data instantly
 - React Query may refetch in the background
 This is why UIs feel fast.
+
+## You can refetch the data manually
+There is a `refetch` in `useQuery` function:
+```ts
+const { data, isLoading, refetch } = useQuery({
+  queryKey: ['users'],
+  queryFn: fetchUsers,
+})
+```
+
+```ts
+<button onClick={() => refetch()}>
+  Refresh users
+</button>
+
+```
 ```

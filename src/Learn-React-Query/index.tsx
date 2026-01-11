@@ -10,7 +10,7 @@ const LearnReactQuery = () => {
         return response.json()
     }
 
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error,refetch } = useQuery({
         queryKey:["countries"],
         queryFn: fetchCountries,
     })
@@ -21,6 +21,7 @@ const LearnReactQuery = () => {
     return (
         <>
             <h2>Learn React Query API</h2>
+            <button onClick={() => refetch()}>Refresh</button>
             <ul>
                 {data.map(country => (
                     <li key={country.isoCode}>{country.isoCode}</li>
