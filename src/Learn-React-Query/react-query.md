@@ -25,6 +25,13 @@ const fetchUsers = async () => {
 - `isLoading`
 - `error`
 
+## `queryKey`
+- `queryKey: ["users]` is name of the data in the cache or identifier.
+- If anyone asks for `users`, give them the cached version.
+- It does not:
+    - call the API
+    - contain the URL
+
 ```ts
 import { useQuery } from '@tanstack/react-query'
 
@@ -46,4 +53,47 @@ function Users() {
   )
 }
 
+```
+
+## The magic of React Query - Caching the data
+
+Imagine this happens:
+
+Component A
+```ts
+useQuery({ queryKey: ['users'], queryFn: fetchUsers })
+```
+
+Component B
+```ts
+useQuery({ queryKey: ['users'], queryFn: fetchUsers })
+```
+
+👉 Result:
+- API is called once
+- Both components share the same cached data
+
+This is the “React Query magic” people talk about.
+
+# Step 3: Refetching the data when data is stale
+
+React Query will refetch your data automatically when:
+- You switch tabs and come back
+- The component remounts
+- The network reconnects
+
+Why? - Because server data might be out of date.
+
+React Query thinks in two states:
+- 🟢 Fresh → “Data is good, don’t refetch”
+- 🟡 Stale → “Data might be old, refetch when possible”
+
+**By default:**
+- Data becomes stale immediately
+- But it stays cached
+
+**That means:**
+- You see cached data instantly
+- React Query may refetch in the background
+This is why UIs feel fast.
 ```
