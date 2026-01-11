@@ -6,6 +6,12 @@ React Query helps you with:
 - Loading & error states
 - Refetching when needed
 
+# Example:
+
+| Page when loaded | Page when loading | Page when error |
+| ----- | ----- | ----- |
+| ![Alt text](image.png) | ![Alt text](image-2.png) | ![Alt text](image-3.png) |
+
 # Step 1: fetch function
 You still need `fetch` to make API call
 
