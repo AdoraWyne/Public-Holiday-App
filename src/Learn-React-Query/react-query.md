@@ -32,7 +32,7 @@ const fetchUsers = async () => {
 - `error`
 
 ## `queryKey`
-- `queryKey: ["users]` is name of the data in the cache or identifier.
+- `queryKey: ["users"]` is name of the data in the cache or identifier.
 - If anyone asks for `users`, give them the cached version.
 - It does not:
     - call the API
