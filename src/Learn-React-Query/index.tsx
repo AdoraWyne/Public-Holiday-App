@@ -10,9 +10,10 @@ const LearnReactQuery = () => {
         return response.json()
     }
 
-    const { data, isLoading, error,refetch } = useQuery({
-        queryKey:["countries"],
+    const { data, isLoading, error, refetch } = useQuery({
+        queryKey:["countries"], // The name of this data in the cache
         queryFn: fetchCountries,
+        staleTime: 5 * 60 * 1000 // 5 minutes, React Query will trust the cache
     })
 
     if(isLoading) return <p>Loading...</p>

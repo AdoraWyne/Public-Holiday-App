@@ -112,4 +112,17 @@ const { data, isLoading, refetch } = useQuery({
 </button>
 
 ```
+
+## You can control the `staleTime`
+
+This means:
+- For 5 minutes, React Query will trust the cache
+- No background refetch
+
+```ts
+useQuery({
+  queryKey: ['users'],
+  queryFn: fetchUsers,
+  staleTime: 5 * 60 * 1000, // 5 minutes
+})
 ```
