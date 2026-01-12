@@ -1,3 +1,7 @@
+# Next:
+- Compare with useEffect, and explain why
+- Pagination
+
 # What is React Query?
 
 React Query helps you with:

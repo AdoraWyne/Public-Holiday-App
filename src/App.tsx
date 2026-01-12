@@ -1,3 +1,4 @@
+import React from "react"
 import {
   QueryClient,
   QueryClientProvider,
@@ -34,7 +35,7 @@ function CountriesList() {
     <div>
       <h1>Public Holiday App</h1>
       { isLoading && <p style={{ color: "grey" }}>Loading...</p>}
-      { error && <p style={{ color: "red" }}>{error}</p>}
+      { error && <p style={{ color: "red" }}>{String(error)}</p>}
     </div>
   );
 }
