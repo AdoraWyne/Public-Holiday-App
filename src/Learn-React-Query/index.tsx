@@ -19,16 +19,18 @@ const LearnReactQuery = () => {
     if(isLoading) return <p>Loading...</p>
     if(error) return <p>Something went wrong</p>
 
+    const countries = data ?? []
+
     return (
-        <>
+        <div>
             <h2>Learn React Query API</h2>
             <button onClick={() => refetch()}>Refresh</button>
             <ul>
-                {data.map(country => (
+                {countries.map(country => (
                     <li key={country.isoCode}>{country.isoCode}</li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 
