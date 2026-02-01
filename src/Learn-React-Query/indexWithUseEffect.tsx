@@ -27,7 +27,6 @@ const LearnUseEffect = () => {
                 if(!response.ok) throw new Error("Network error")
                 
                 const result = await response.json()
-                console.log("adora: ", result)
                 if(isMounted) setData(result)
             } catch (err) {
                 if(isMounted) setError(err)
