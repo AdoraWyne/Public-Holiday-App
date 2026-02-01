@@ -1,10 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import './App.css';
 import { useQuery } from '@tanstack/react-query'
 import LearnReactQuery from "./Learn-React-Query/index"
 import LearnUseEffect from "./Learn-React-Query/indexWithUseEffect";
 
 const App: React.FC = () => {
+  const [ selectedCountry, setSelectedCountry] = useState("NL")
+
   const fetchCountries = async () => {
     const url = "https://openholidaysapi.org/Countries?languageIsoCode=EN"
     try {
@@ -30,13 +33,20 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1>My App</h1>
+      <h1>Public Holiday App</h1>
+      <select name="countries" id="countries" value={selectedCountry} onChange={e => setSelectedCountry(e.target.value)}>
+        {data.map((country) => {
+          return (
+            <option key={country.isoCode} value={country.isoCode}>{country.name[0].text}</option>
+          )
+        })}
+      </select>
 
       <hr />
-      <div className="main-app">
+      {/* <div className="main-app">
         <LearnReactQuery />
         <LearnUseEffect />
-      </div>
+      </div> */}
     </div>
   )
 }
