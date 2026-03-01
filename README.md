@@ -13,7 +13,15 @@ The main screen should show:
 - Change to use `react-query` from `useEffect` for calling API
 
 # Next:
-- Use the array of countries to render dropdown menu.
-- Try to understand react query code.
+- Add isLoading and error to the component.
+- Add api file
+- Add refresh for fun
+
+- Why useEffect is bad?
 
 # DONE:
+- Dropdown menu
+- Default the dropdown to The Netherlands
+- Understand what is isoCode? The standard shortform name for each countries
+- Add types annotation
+- Add to call public holiday for each country
