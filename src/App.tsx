@@ -2,11 +2,10 @@ import React from "react";
 import { useState } from "react";
 import './App.css';
 import { useQuery } from '@tanstack/react-query'
-import LearnReactQuery from "./Learn-React-Query/index"
-import LearnUseEffect from "./Learn-React-Query/indexWithUseEffect";
+import type { Countries } from "./types";
 
 const App: React.FC = () => {
-  const [ selectedCountry, setSelectedCountry] = useState("NL")
+  const [ selectedCountry, setSelectedCountry ] = useState("NL")
 
   const fetchCountries = async () => {
     const url = "https://openholidaysapi.org/Countries?languageIsoCode=EN"
@@ -33,9 +32,13 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1>Public Holiday App</h1>
+      <h1>Public Holidays App</h1>
+
+      {isLoading && <p>Loading...</p>}
+      {error && <p>An error has occurred: {error.message}</p>}
+
       <select name="countries" id="countries" value={selectedCountry} onChange={e => setSelectedCountry(e.target.value)}>
-        {data.map((country) => {
+        {data?.map((country) => {
           return (
             <option key={country.isoCode} value={country.isoCode}>{country.name[0].text}</option>
           )
