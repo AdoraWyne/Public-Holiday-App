@@ -10,3 +10,18 @@ export type Country = {
 }
 
 export type Countries = Country[];
+
+// ---
+
+export type PublicHoliday = {
+ id: string;
+ startDate: string;
+ endDate: string;
+ type: string;
+ name: LocalizedText[];
+ regionalScope: string;
+ temporalScope: string;
+ nationwide: boolean;
+}
+
+export type PublicHolidays = PublicHoliday[]
